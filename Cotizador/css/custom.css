@@ -1,0 +1,22 @@
+body{    
+    background-image: linear-gradient(#ffffff, #ffffff); 
+    padding-top:50px;
+}
+
+#box{
+    border: 1px solid rgb(253, 150, 81);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
+    background: rgb(253, 150, 81)
+    border-radius: 4px;
+    
+    width : 600px;
+}
+
+h2{
+    text-align:center;
+    color:#000000;
+}
+
+#sub{
+    color: red;
+}
