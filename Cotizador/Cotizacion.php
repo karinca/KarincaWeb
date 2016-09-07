@@ -36,6 +36,8 @@
 
         <!-- Bootstrap Core JavaScript -->
         <script src="js/bootstrap.min.js"></script>
+        <!--Codigo de cotizacion-->
+        <script src="js/Cotizacion.js"></script>
 
         <!-- Plugin jQuery para RUT -->
         <script src="js/jquery.Rut.min.js"></script>
@@ -43,14 +45,7 @@
         <script src="js/jquery.slides.js"></script>
         <!--<script src="js/jquery.slides.min.js"></script>-->
 
-        <script type="text/javascript">
-            
-            function invocarModal()
-            {
-                $("#modal").modal("show");
-            }
-
-        </script>
+        
  </head>
  <body id="cotizacion">
  	<div class="container">
@@ -59,7 +54,7 @@
                       <h2>Formulario de cotización</h2>                       
                       <h4 id="sub">(*) Campo obligatorio</h4> 
                             <hr>
-                            <form class="form-horizontal" action="" method="post" id="formulario-cotizacion">
+                            <!--<form class="form-horizontal" action="" method="post" id="formulario-cotizacion">-->
                                     <fieldset>
                                     <div class="form-group">                                    
                                         <div class="col-md-12">
@@ -76,17 +71,17 @@
                                                 <label for="nombre"> *Nombre o razón social </label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <input name="nombre" placeholder="Nombre o razón social" class="form-control" type="text">
+                                                    <input name="nombre" id="nombre" placeholder="Nombre o razón social" class="form-control" type="text">
                                                 </div>
                                             </div>
                                         </div>                                  
                                         <!-- Text input-->
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <label for="nombre"> *Rut </label>
+                                                <label for="rut"> *Rut </label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                                    <input name="rut" placeholder="Rut" class="form-control" type="text">
+                                                    <input name="rut" id="rut" placeholder="Rut" class="form-control" type="text">
                                                 </div>
                                             </div>
                                         </div>
@@ -96,17 +91,17 @@
                                                 <label for="nombre"> *Teléfono </label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                                    <input name="telefono" placeholder="Teléfono" class="form-control" type="text">
+                                                    <input name="telefono" id="telefono" placeholder="Teléfono" class="form-control" type="text">
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- Text input-->
                                          <div class="form-group">
                                             <div class="col-md-12">
-                                                <label for="nombre"> *Email </label>
+                                                <label for="email"> *Email </label>
                                                 <div class="input-group">
                                                     <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                                    <input name="email" placeholder="E-Mail" class="form-control" type="text">
+                                                    <input name="email" id="email" placeholder="E-Mail" class="form-control" type="text">
                                                 </div>
                                             </div>
                                         </div>
@@ -135,11 +130,11 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="col-md-12">
-                                                <button type="submit" class="btn btn-warning pull-right">Enviar <span class="glyphicon glyphicon-send"></span></button>
+                                                <button  id="enviar" class="btn btn-warning pull-right">Enviar <span class="glyphicon glyphicon-send"></span></button>
                                             </div>
                                         </div>
                                     </fieldset>
-                                </form> 
+                                <!--</form> -->
     </div>
 </div>
 
@@ -147,16 +142,13 @@
 <div class="modal fade" id="modal" tabindex="-1" data-backdrop=”static” role="dialog" aria-labelledby="edit" aria-hidden="true">
     <div class="modal-dialog">
     <div class="modal-content">
-        <div class="modal-header">
+        <div id="modal-cabecera" class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-            </button>
-            <h4 class="modal-title custom_align" id="Heading">Envío Erroneo</h4>
+            </button>            
         </div>
-        <div class="modal-body cuerpo">     
-           <h2>Existen datos sin llenar</h2>
-           <h3>Por favor intente nuevamente</h3>
-        </div>
+        <div  class="modal-body cuerpo centre">     
+                </div>
         <div class="modal-footer ">     
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <button id="volverEI" type="button" class="btn btn-danger btn-lg" style="width: 100%;">
