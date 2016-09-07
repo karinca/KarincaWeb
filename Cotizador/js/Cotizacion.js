@@ -53,6 +53,10 @@ function validarForm(){
 
 	if (isError) {		
 		console.log(error);
+		$("#modal-cabecera").empty();
+		$(".modal-body").empty();
+		$("#modal-cabecera").append('<h4 class="modal-title custom_align" id="Heading">Formulario incompleto</h4>');
+		$(".modal-body").append('<h2>Faltan algunos campos por completar</h2><p>'+error+'</p>');
 		$("#modal").modal("show");
 	}else
 	{
