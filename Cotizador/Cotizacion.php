@@ -1,9 +1,12 @@
 <!-- Navigation -->
 
+
+
+
  <!DOCTYPE html>
  <html>
  <head>
- 	<title>Cotizacio&oacutte;n</title>
+ 	<title>Cotizaci&oacute;n</title>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="description" content="AppDemo de PHP">
@@ -39,15 +42,24 @@
          <!-- Plugin jQuery para Slides -->
         <script src="js/jquery.slides.js"></script>
         <!--<script src="js/jquery.slides.min.js"></script>-->
+
+        <script type="text/javascript">
+            
+            function invocarModal()
+            {
+                $("#modal").modal("show");
+            }
+
+        </script>
  </head>
- <body>
+ <body id="cotizacion">
  	<div class="container">
-    <div class="row">          
+    <div id="cotizacion" class="row">          
                      <div class="col-md-offset-4 col-md-4" id="box">
                       <h2>Formulario de cotización</h2>                       
                       <h4 id="sub">(*) Campo obligatorio</h4> 
                             <hr>
-                            <form class="form-horizontal" action=" " method="" id="formulario-cotizacion">
+                            <form class="form-horizontal" action="" method="post" id="formulario-cotizacion">
                                     <fieldset>
                                     <div class="form-group">                                    
                                         <div class="col-md-12">
@@ -101,8 +113,8 @@
                                         <!-- Text input-->
                                         <div class="form-group">                                    
                                             <div class="col-md-12">
-                                                <label for="Entidad"> *Servicio </label>
-                                                <select id="Entidad" name="Entidad" class="form-control" required="required">
+                                                <label > *Servicio </label>
+                                                <select id="servicio" name="servicio" class="form-control" required="required">
                                                     <option value="na" selected="">Seleccione</option>
                                                     <option value="1">Aplicación de Escritorio</option>
                                                     <option value="2">Aplicacion Móvil</option>
@@ -130,5 +142,32 @@
                                 </form> 
     </div>
 </div>
+
+
+<div class="modal fade" id="modal" tabindex="-1" data-backdrop=”static” role="dialog" aria-labelledby="edit" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+            </button>
+            <h4 class="modal-title custom_align" id="Heading">Envío Erroneo</h4>
+        </div>
+        <div class="modal-body cuerpo">     
+           <h2>Existen datos sin llenar</h2>
+           <h3>Por favor intente nuevamente</h3>
+        </div>
+        <div class="modal-footer ">     
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <button id="volverEI" type="button" class="btn btn-danger btn-lg" style="width: 100%;">
+                <span class="glyphicon glyphicon-repeat"></span> 
+                Volver
+                </button>
+            </div>
+        </div>
+  </div>
+  </div>
+  </div>
+
  </body>
  </html>
