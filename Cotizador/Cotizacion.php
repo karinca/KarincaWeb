@@ -1,6 +1,22 @@
 <!-- Navigation -->
 
-
+<?php 
+    $host = "localhost";
+    //$user = "root";
+    //$pwd = "";
+    $user = "karincac";    
+    $pwd = "eliaz.119_";
+    
+    $BD = "karincac_desarrollo";
+    $consultaServicio = "SELECT codigo, desscripcion FROM servicio ORDER BY 1 ASC";
+    $consultaEntidad = "SELECT codigo, descripcion FROM tipo_entidad ORDER BY 1 ASC";
+    $conexion = new mysqli($host, $user, $pwd,$BD);
+    $resultadoServicio = $conexion->query($consultaServicio);
+    $resultadoEntidad = $conexion->query($consultaEntidad);
+    //$fila = mysqli_fetch_assoc($resultado);
+    //echo $fila['desscripcion'];    
+    //echo "Conexión exitosa!";
+?>
 
 
  <!DOCTYPE html>
@@ -44,101 +60,86 @@
          <!-- Plugin jQuery para Slides -->
         <script src="js/jquery.slides.js"></script>
         <!--<script src="js/jquery.slides.min.js"></script>-->
-
-        
  </head>
  <body id="cotizacion">
- 	<div class="container">
-    <div id="cotizacion" class="row">          
-                     <div class="col-md-offset-4 col-md-4" id="box">
-                      <h2>Formulario de cotización</h2>                       
-                      <h4 id="sub">(*) Campo obligatorio</h4> 
-                            <hr>
-                            <!--<form class="form-horizontal" action="" method="post" id="formulario-cotizacion">-->
-                                    <fieldset>
-                                    <div class="form-group">                                    
-                                        <div class="col-md-12">
-                                            <label for="Entidad"> *Tipo entidad </label>
-                                            <select id="Entidad" name="Entidad" class="form-control" required="required">
-                                                <option value="na" selected="">Seleccione</option>
-                                                <option value="1">Persona Natural</option>
-                                                <option value="2">Persona Jurídica</option>
-                                            </select>
-                                        </div>
-                                    </div>     
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <label for="nombre"> *Nombre o razón social </label>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                                    <input name="nombre" id="nombre" placeholder="Nombre o razón social" class="form-control" type="text">
-                                                </div>
-                                            </div>
-                                        </div>                                  
-                                        <!-- Text input-->
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <label for="rut"> *Rut </label>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-                                                    <input name="rut" id="rut" placeholder="Rut" class="form-control" type="text">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Text input-->
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <label for="nombre"> *Teléfono </label>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                                                    <input name="telefono" id="telefono" placeholder="Teléfono" class="form-control" type="text">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Text input-->
-                                         <div class="form-group">
-                                            <div class="col-md-12">
-                                                <label for="email"> *Email </label>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                                    <input name="email" id="email" placeholder="E-Mail" class="form-control" type="text">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Text input-->
-                                        <div class="form-group">                                    
-                                            <div class="col-md-12">
-                                                <label > *Servicio </label>
-                                                <select id="servicio" name="servicio" class="form-control" required="required">
-                                                    <option value="na" selected="">Seleccione</option>
-                                                    <option value="1">Aplicación de Escritorio</option>
-                                                    <option value="2">Aplicacion Móvil</option>
-                                                    <option value="3">Aplicacion Web</option>
-                                                    <option value="4">Otros</option>
-                                                </select>
-                                            </div>
-                                        </div>  
-                                        <!-- Text input-->
-                                        <div class="form-group">
-                                            <div class="col-md-12 inputGroupContainer">
-                                            <label for="comentario"> *Comentario </label>
-                                                <div class="input-group">
-                                                    <span class="input-group-addon"><i class="glyphicon glyphicon-comment"></i></span>
-                                                    <textarea class="form-control" id="comentario" name="comentario" placeholder="Comentario"></textarea>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="col-md-12">
-                                                <button  id="enviar" class="btn btn-warning pull-right">Enviar <span class="glyphicon glyphicon-send"></span></button>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                <!--</form> -->
+
+    <button  id="cotizar" class="btn btn-warning pull-right">Cotizar <span class="glyphicon glyphicon-send"></span></button>
+ 
+ </body>
+
+
+<!-- Modal Cotizacion -->
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+<div id="modal-cotizacion" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Cotizaci&oacute;n</h4>
+      </div>
+      <div class="modal-body" >
+                <div id="box">
+                    <h2>Formulario de cotización</h2>                       
+                    <h4 id="sub">(*) Campo obligatorio</h4> 
+                    <label for="Entidad"> *Tipo entidad </label>
+                    <select id="Entidad" name="Entidad" class="form-control input-modal" required="required">
+                        <?php 
+                             while($filaEntidad = $resultadoEntidad->fetch_assoc()){                           
+                                    printf ('<option value="%s">%s</option>',$filaEntidad['codigo'],$filaEntidad['descripcion']); 
+                                    //$resultadoEntidad->free();
+                             }
+                         ?>                                             
+                    </select>
+                    <script type="text/javascript"></script>
+                    <div class="form-group has-feedback">
+                        <label class="control-label">*Nombre o razón social</label>                        
+                        <i class="glyphicon glyphicon-user form-control-feedback"></i>
+                        <input name="nombre" id="nombre" type="text" class="form-control" placeholder="Nombre o razón social" />
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label"> *Rut </label>
+                        <i class="glyphicon form-control-feedback glyphicon-pencil"></i>
+                        <input name="rut" id="rut" placeholder="Rut" class="form-control" type="text">
+                    </div>
+                     <div class="form-group has-feedback">
+                        <label class="control-label"> *Teléfono  </label>
+                        <i class="glyphicon glyphicon-earphone form-control-feedback"></i>
+                        <input name="telefono" id="telefono" placeholder="Teléfono" class="form-control" type="text">
+                    </div>
+                    <div class="form-group has-feedback">
+                        <label class="control-label"> *Email   </label>
+                        <i class="glyphicon glyphicon-envelope form-control-feedback"></i>
+                        <input name="email" id="email" placeholder="E-Mail" class="form-control" type="text">
+                    </div>
+                    <label > *Servicio </label>
+                    <select id="servicio" name="servicio" class="form-control" required="required">
+                        <?php 
+                             while($filaservicio = $resultadoServicio->fetch_assoc()){                                
+                                printf ('<option value="%s">%s</option>',$filaservicio['codigo'],$filaservicio['desscripcion']);                                  
+                             }                             
+                             //$resultadoServicio->free();
+                             $conexion->close();
+                         ?>                                             
+                    </select>
+                    <div class="form-group has-feedback">
+                        <label class="control-label"> *Comentario   </label>
+                        <i class="glyphicon glyphicon-comment form-control-feedback"></i>
+                        <textarea class="form-control" id="comentario" name="comentario" placeholder="Comentario"></textarea>
+                    </div>
+                </div>
+      </div>
+      <div class="modal-footer">
+        <button  id="enviar" class="btn btn-warning pull-right">Enviar <span class="glyphicon glyphicon-send"></span></button>
+        <button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cerras</button>
+      </div>
     </div>
+
+  </div>
 </div>
 
 
+<!-- Modal Informacion -->
 <div class="modal fade" id="modal" tabindex="-1" data-backdrop=”static” role="dialog" aria-labelledby="edit" aria-hidden="true">
     <div class="modal-dialog">
     <div class="modal-content">
@@ -149,7 +150,7 @@
         </div>
         <div  class="modal-body cuerpo centre">     
                 </div>
-        <div class="modal-footer ">     
+        <div class="modal-footer texto-centrado">     
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <button id="volverEI" type="button" class="btn btn-danger btn-lg" style="width: 100%;">
                 <span class="glyphicon glyphicon-repeat"></span> 
@@ -160,6 +161,4 @@
   </div>
   </div>
   </div>
-
- </body>
  </html>
