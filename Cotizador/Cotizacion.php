@@ -2,10 +2,8 @@
 
 <?php 
     $host = "localhost";
-    //$user = "root";
-    //$pwd = "";
-    $user = "karincac_sparra";    
-    $pwd = "karinca123";
+    $user = "root"; $pwd = "";
+    //$user = "karincac_sparra";  $pwd = "karinca123";
     
     $BD = "karincac_desarrollo";
     $consultaServicio = "SELECT codigo, desscripcion FROM Servicio ORDER BY 1 ASC";
