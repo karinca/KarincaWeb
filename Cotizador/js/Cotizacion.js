@@ -12,6 +12,8 @@
 
 //============== Eventos
 $(document).ready(function(){
+	
+		$("#modal-cotizacion").modal("show");
 	$("#enviar").click(function(){
 		console.log("click");
 		validarForm();
@@ -28,6 +30,10 @@ $(document).ready(function(){
 
 	$("#volverEI").click(function(){
 		$("#modal").modal("hide");
+	});
+
+	$("#cotizar").click(function(){
+		$("#modal-cotizacion").modal("show");
 	});
 
 });
@@ -82,24 +88,21 @@ function EnviarDatos(entidad,nombre,rut,telefono,email,comentario,servicio){
                 type:  'post',
                 success:  function (response) {
                 	console.log(response);
-                	if(response == "ok")
-                	{
+                	/*if(response == "ok")
+                	{*/
                 		$("#modal-cabecera").empty();
                 		$(".modal-body").empty();
             			$("#modal-cabecera").append('<h4 class="modal-title custom_align" id="Heading">Cotizacion Correcta</h4>');
             			$(".modal-body").append('<h2>Cotizacion Enviada correctamente</h2><h3>Nuestro personal se pondrá en contacto con usted.</h3>');
             			$("#modal").modal("show");
-                	}else
+                	/*}else
                 	{                      	
                 		$("#modal-cabecera").empty();
                 		$(".modal-body").empty();          		
             			$("#modal-cabecera").append('<h4 class="modal-title custom_align" id="Heading">Cotizacion Erronea</h4>');
             			$(".modal-body").append('<h2>Ocurrió un error al enviar formulario</h2><h3>Porfavor intentelo nuevamente</h3>');
                 		$("#modal").modal("show");
-                	}                     
-                },
-            	error: function (xhr, ajaxOptions, thrownError) {
-			        	console.log("asdasdasdassd");
-			     }
+                	}   */                  
+                }
         });
 }
