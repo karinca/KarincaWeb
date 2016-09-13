@@ -6,10 +6,12 @@ body{
 #box{
     border: 1px solid rgb(253, 150, 81);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 5px 2px;
-    background: rgb(253, 150, 81)
-    border-radius: 4px;
-    
-    width : 600px;
+    background: rgb(253, 150, 81) border-radius: 4px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+    /*width : 600px;*/
 }
 
 h2{
@@ -19,4 +21,20 @@ h2{
 
 #sub{
     color: red;
+}
+
+.texto-centrado
+{
+    text-align: center;
+}
+
+#volverEI{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.col-md-12 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 100%;
 }
