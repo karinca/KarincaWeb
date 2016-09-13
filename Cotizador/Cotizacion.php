@@ -4,13 +4,21 @@
     $host = "localhost";
     //$user = "root";
     //$pwd = "";
-    $user = "karincac";    
-    $pwd = "eliaz.119_";
+    $user = "karincac_sparra";    
+    $pwd = "karinca123";
     
     $BD = "karincac_desarrollo";
-    $consultaServicio = "SELECT codigo, desscripcion FROM servicio ORDER BY 1 ASC";
-    $consultaEntidad = "SELECT codigo, descripcion FROM tipo_entidad ORDER BY 1 ASC";
+    $consultaServicio = "SELECT codigo, desscripcion FROM Servicio ORDER BY 1 ASC";
+    $consultaEntidad = "SELECT codigo, descripcion FROM Tipo_entidad ORDER BY 1 ASC";
     $conexion = new mysqli($host, $user, $pwd,$BD);
+    if ($conexion->connect_errno) {
+        printf("Conexión fallida: %s\n", $conexion->connect_error);
+        exit();
+    }
+    else
+    {
+        echo '<script type="text/javascript">console.log("Conexion establecida")</script>';
+    }
     $resultadoServicio = $conexion->query($consultaServicio);
     $resultadoEntidad = $conexion->query($consultaEntidad);
     //$fila = mysqli_fetch_assoc($resultado);
@@ -37,8 +45,6 @@
 
         <!-- Custom CSS -->
         <link href="css/custom.css" rel="stylesheet">
-        <link href="css/simple-sidebar.css" rel="stylesheet">
-        <link href="css/fonts.css" rel="stylesheet">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
